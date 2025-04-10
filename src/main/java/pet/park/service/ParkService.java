@@ -1,5 +1,6 @@
 package pet.park.service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
@@ -40,7 +41,7 @@ public class ParkService {
 			contributor = new Contributor();
 		}
 		else {
-			contributor = findContributorId(contributorId);
+			contributor = findContributorById(contributorId);
 		}
 		
 		return contributor;
@@ -48,10 +49,39 @@ public class ParkService {
 	
 	}
 
-	private Contributor findContributorId(Long contributorId) {
+	private Contributor findContributorById(Long contributorId) {
 		return contributorDao.findById(contributorId)
 	       .orElseThrow(() -> new NoSuchElementException(
 	    	"Contributor with ID=" + contributorId + "was not found."));
 	}
+
+	@Transactional(readOnly = true)
+	public List<ContributorData> retrieveAllContributors() {
+		
+		//method enhanced for loop 
+//		List<Contributor> contributors = contributorDao.findAll();
+//		List<ContributorData> response = new LinkedList<>();
+//		
+//		for (Contributor contributor : contributors) {
+//			response.add(new ContributorData(contributor));
+//			
+//		}
+//		
+//		return response;
+		
+		//nuisance Java 8th stream 
+		//@formatter:off
+		return contributorDao.findAll()
+		    .stream()
+		    .map(ContributorData::new)
+		    .toList();
+		//@formatter:on
+	}
+
+	public ContributorData retrieveContributorById(Long contributorId) {
+		Contributor contributor = findContributorById(contributorId);
+		return new ContributorData(contributor);
+	}
+	
 
 }
