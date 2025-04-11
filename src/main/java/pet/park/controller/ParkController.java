@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -22,21 +23,28 @@ import pet.park.service.ParkService;
 public class ParkController {
 	@Autowired
 	private ParkService parkService;
-	
+
 	@PostMapping("/contributor")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ContributorData insertContributor(
-			@RequestBody ContributorData contributorData) {
+	public ContributorData insertContributor(@RequestBody ContributorData contributorData) {
 		log.info("Creating contributor {}", contributorData);
 		return parkService.saveContributor(contributorData);
 	}
-	
-	@GetMapping("/contributor")
-	public List<ContributorData> retrieveAllContributors(){
-	  log.info("Retrieve all contributors called.");
-	  return parkService.retrieveAllContributors();
+
+	@PutMapping("/contributor/{contributorId}")
+	public ContributorData updateContributor(@PathVariable Long contributorId,
+			@RequestBody ContributorData contributorData) {
+		contributorData.setContributorId(contributorId);
+		log.info("Updating contributor {}", contributorData);
+		return parkService.saveContributor(contributorData);
 	}
-	
+
+	@GetMapping("/contributor")
+	public List<ContributorData> retrieveAllContributors() {
+		log.info("Retrieve all contributors called.");
+		return parkService.retrieveAllContributors();
+	}
+
 	@GetMapping("/contributor/{contributorId}")
 	public ContributorData retrieveContributorById(@PathVariable Long contributorId) {
 		log.info("Retrieve contributor with ID={}", contributorId);

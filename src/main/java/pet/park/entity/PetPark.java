@@ -20,7 +20,7 @@ import lombok.ToString;
 @Entity
 @Data
 public class PetPark {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long petParkId;
@@ -28,23 +28,20 @@ public class PetPark {
 	private String directions;
 	private String stateOrProvince;
 	private String country;
-	
+
 	@Embedded
 	private GeoLocation geoLocation;
-	
+
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "contributor_id", nullable = false)
-	private  Contributor contributor;
-	
+	private Contributor contributor;
+
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@ManyToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(name = "pet_park _amenity", 
-	joinColumns = @JoinColumn(name = "pet_park_id"),
-	inverseJoinColumns = @JoinColumn(name = "amenity_id"))
+	@JoinTable(name = "pet_park _amenity", joinColumns = @JoinColumn(name = "pet_park_id"), inverseJoinColumns = @JoinColumn(name = "amenity_id"))
 	private Set<Amenity> amenities = new HashSet<>();
-	
 
 }

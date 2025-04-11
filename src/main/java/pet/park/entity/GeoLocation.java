@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class GeoLocation {
- private BigDecimal latitude;
- private BigDecimal longitude;
- 
- public GeoLocation(GeoLocation geoLocation) {
-	 this.latitude = geoLocation.latitude;
-	 this.longitude = geoLocation.longitude;
- }
+	private BigDecimal latitude;
+	private BigDecimal longitude;
+
+	public GeoLocation(GeoLocation geoLocation) {
+		this.latitude = geoLocation.latitude;
+		this.longitude = geoLocation.longitude;
+	}
 }
