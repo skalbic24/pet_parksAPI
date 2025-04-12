@@ -1,0 +1,16 @@
+{
+  "parkName": "Sunny Paws Park",
+  "directions": "Turn left after the gas station, right past the big oak tree.",
+  "stateOrProvince": "TX",
+  "country": "USA",
+  "geoLocation": {
+    "latitude": 30.2672,
+    "longitude": -97.7431
+  },
+  "contributor": {
+    "contributorId": 1
+  },
+  "amenities": [
+    "dog friendly", "cat friendly", "playground", "shaded area", "wifi"
+  ]
+}

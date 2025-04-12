@@ -1,0 +1,20 @@
+{
+  "parkName": "Whisker Woods",
+  "directions": "Off Route 12, past the old water tower — look for the sign with a paw print.",
+  "stateOrProvince": "CA",
+  "country": "USA",
+  "geoLocation": {
+    "latitude": 36.7783,
+    "longitude": -119.4179
+  },
+  "contributor": {
+    "contributorId": 1
+  },
+  "amenities": [
+    "agility course",
+    "picnic tables",
+    "restroom access",
+    "trail access",
+    "pet waste stations"
+  ]
+}

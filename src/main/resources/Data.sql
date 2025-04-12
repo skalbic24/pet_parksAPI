@@ -10,3 +10,5 @@ INSERT INTO amenity (amenity) VALUES ('wifi');
 INSERT INTO amenity (amenity) VALUES ('playground for kids');
 INSERT INTO amenity (amenity) VALUES ('basketball area');
 INSERT INTO amenity (amenity) VALUES ('soccer area');
+INSERT INTO amenity (amenity) VALUES ('water fountain');
+INSERT INTO amenity (amenity) VALUES ('shaded area');
